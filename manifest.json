@@ -1,0 +1,31 @@
+{
+  "name": "Mercadona Actualizada",
+  "version": "1.0.0",
+  "description": "Actualiza la apariencia de la web de mercadona",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.telecompra.mercadona.es/*"
+      ],
+      "js": [
+        "/js/index.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://*.telecompra.mercadona.es/*"
+      ],
+      "resources": [
+        "/css/reset.css",
+        "/css/index.css",
+        "/css/sitemap.css",
+        "/css/sidebar.css",
+        "/css/topSearch.css",
+        "/css/menu.css"
+      ]
+    }
+  ],
+  "manifest_version": 3
+}

@@ -1,0 +1,88 @@
+.colorfondo {
+  background-color: var(--base-background-title);
+}
+
+.marcocentrado1 {
+  height: auto !important;
+  overflow-x: initial !important;
+  overflow-y: initial !important;
+}
+
+.marcocentrado1 > .imagenlogo {
+  background-color: initial;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.marcocentrado1 > .imagenlogo > a {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.marcocentrado1 > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.marcocentrado1 > div:nth-child(2) > div,
+.marcocentrado1 > .cuerposeccion {
+  padding: 4px 8px;
+}
+
+.marcocentrado1 > div:nth-child(2) > .textobuscador1,
+.marcocentrado1 > .cuerposeccion {
+  background-color: var(--base-background-title);
+  border: none;
+  clear: initial;
+  color: var(--base-fontColor-main);
+  float: none;
+  font-family: var(--base-fontFamily-main);
+  font-size: var(--base-fontSize--title);
+  font-weight: var(--base-fontWeight-title);
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador {
+  background-color: var(--base-background-main);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  float: none;
+  min-height: 0;
+  padding: 16px 8px;
+}
+
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador,
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador2 {
+  align-items: center;
+  color: var(--base-fontColor-dark);
+  display: flex;
+  font-family: var(--base-fontFamily-main);
+  font-size: var(--base-fontSize--main);
+  font-weight: var(--base-fontWeight-main);
+  margin-bottom: 8px;
+  padding: 0;
+  vertical-align: initial;
+}
+
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador2 {
+  margin-bottom: 0;
+}
+
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador > input,
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador2 > div:nth-child(2) {
+  flex: 1;
+}
+
+.marcocentrado1 > .cuerposeccion > .textoseccion {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+}

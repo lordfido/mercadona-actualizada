@@ -1,0 +1,30 @@
+.body_verde .marcolineamapa {
+  align-items: center;
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.body_verde .marcolineamapa .mapaweb {
+  border: none;
+  float: none;
+  right: 0;
+  color: inherit;
+}
+
+.body_verde .marcolineamapa .mapaweb ul {
+  display: flex;
+  margin: 8px 0;
+  padding: 0;
+  vertical-align: initial;
+}
+
+.body_verde .marcolineamapa .mapaweb ul li {
+  float: none;
+  margin: 0;
+  margin-left: 14px;
+}
+
+.body_verde .marcolineamapa .mapaweb ul li a {
+  font-size: var(--base-fontSize--main);
+}

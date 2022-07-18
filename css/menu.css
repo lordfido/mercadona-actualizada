@@ -1,0 +1,48 @@
+html,
+body.fondoverde {
+  background-color: var(--base-background-main) !important;
+}
+
+body > ul.ulnivel1,
+body > ul.ulnivel1 > li,
+body > ul.ulnivel1 > li > a,
+body > ul.ulnivel1 > li > a:hover,
+body > ul.ulnivel1 > li > ul.ulnivel2,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > a,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li > a {
+  background-color: initial;
+  color: var(--base-fontColor-dark);
+}
+
+body > ul.ulnivel1,
+body > ul.ulnivel1 > li > ul.ulnivel2,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 {
+  padding-top: 4px;
+}
+
+body > ul.ulnivel1 > li > a,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > a,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li > a {
+  border-radius: 4px;
+  display: block;
+  padding: 4px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+body > ul.ulnivel1 > li > a:hover,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > a:hover,
+body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li > a:hover {
+  background-color: var(--base-background-hover);
+}
+
+body > ul.ulnivel1 {
+  font-size: var(--base-fontSize--main);
+}
+
+body > ul.ulnivel1 li:has(ul) {
+  background-color: red;
+}

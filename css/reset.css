@@ -1,0 +1,52 @@
+:root {
+  --base-fontFamily-main: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  
+  /* Colors */
+  --base-brandColor: #006633;
+
+  /* Colors: Backgrounds */
+  --base-background-title: var(--base-brandColor);
+  --base-background-main: #FFFFEE;
+  --base-background-hover: #00663344;
+
+  /* Colors: Texts */
+  --base-fontColor-dark: #000000;
+  --base-fontColor-main: #FFFFFF;
+
+  /* Font Sizes */
+  --base-fontSize--title: 1em;
+  --base-fontSize--main: 0.85em;
+
+  /* Font Weights */
+  --base-fontWeight-title: 700;
+  --base-fontWeight-main: 400;
+}
+
+html,
+body {
+  background-color: var(--base-brandColor);
+  font-family: var(--base-fontFamily-main);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  width: 100%;
+}

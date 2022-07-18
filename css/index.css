@@ -1,0 +1,14 @@
+html > frameset {
+  display: flex;
+  flex-direction: column;
+}
+
+html > frameset > frame,
+html > frameset > frameset {
+  display: flex;
+  height: auto;
+}
+
+html > frameset > frameset {
+  flex: 1
+}
