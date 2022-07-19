@@ -55,7 +55,8 @@ body {
   box-sizing: border-box;
   clear: both !important;
   float: none !important;
-  overflow-x: hidden;
+  /* This rule is removing the list-items' marks */
+  /* overflow-x: hidden; */
 }
 
 code {
