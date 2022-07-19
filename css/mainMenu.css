@@ -1,0 +1,56 @@
+body.estilo3 {
+  background-color: var(--base-background-title);
+  display: flex;
+}
+
+body.estilo3 > .marcotop {
+  background-color: transparent;
+  border: none;
+  color: var(--base-fontColor-main);
+  display: flex;
+  flex: 1;
+  float: none;
+  font-family: var(--base-fontFamily-main);
+  font-size: var(--base-fontSize-main);
+  font-weight: var(--base-fontWeight-main);
+}
+
+body.estilo3 > .marcotop > .botonestop {
+  align-items: center;
+  background-color: transparent;
+  color: inherit;
+  display: flex;
+  flex: 1;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+body.estilo3 > .marcotop > .botonestop > .botontop {
+  color: inherit;
+  display: flex;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+body.estilo3 > .marcotop > .botonestop > .botontop > .botonsubmitmenu {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-right: 8px;
+  padding: 4px 8px;
+}
+
+body.estilo3 > .marcotop > .botonestop > .botontop > .botonsubmitmenu:last-child {
+  margin-right: 0;
+}

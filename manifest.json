@@ -23,7 +23,8 @@
         "/css/sitemap.css",
         "/css/sidebar.css",
         "/css/topSearch.css",
-        "/css/menu.css"
+        "/css/menu.css",
+        "/css/mainMenu.css"
       ]
     }
   ],

@@ -79,6 +79,15 @@
       loadCssfile(menuFrame, 'reset.css');
       loadCssfile(menuFrame, 'menu.css');
     }
+
+    const mainMenuFrame = document.querySelector('frame[name="topFrame"]');
+    loadCssfile(mainMenuFrame, 'reset.css');
+    loadCssfile(mainMenuFrame, 'mainMenu.css');
+
+    setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset'), [
+      ['cols', ''],
+      ['rows', '34,*']
+    ]);
   }
 
   setTimeout(init, 1000);
