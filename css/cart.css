@@ -1,0 +1,340 @@
+body.fondomargen {
+  background-color: var(--base-background-title);
+  color: var(--base-fontColor-main);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--base-fontFamily-main);
+  font-weight: var(--base-fontWeight-main);
+  height: 100vh;
+}
+
+/* Schedule and Phone number */
+body.fondomargen > .marcocesta1 {
+  background-color: transparent;
+  color: inherit;
+  display: flex;
+  flex-direction: column-reverse;
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 8px 0px;
+  text-align: initial;
+}
+
+body.fondomargen > .marcocesta1 > div {
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--base-fontSize-large);
+  font-weight: var(--base-fontWeight-title);
+  margin: 0;
+  padding: 8px;
+  text-align: right;
+}
+
+body.fondomargen > .marcocesta1 > div:first-child {
+  display: none !important;
+}
+
+/* Cart Tabs */
+body.fondomargen > .pestañas {
+  border-bottom: 9px solid var(--base-background-tabSelected);
+  padding: 0 4px;
+}
+
+body.fondomargen > .pestañas > div {
+  background-color: var(--base-background-tab);
+  border: none;
+  border-radius: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: inherit;
+  display: inline-block;
+  font-family: inherit;
+  font-size: var(--base-fontSize-medium);
+  font-weight: inherit;
+  height: auto;
+  margin-right: 2px;
+  min-width: 0;
+  padding: 8px;
+  text-decoration: none;
+  width: auto;
+}
+
+body.fondomargen > .pestañas > div:last-child {
+  margin-right: 0px;
+}
+
+body.fondomargen > .pestañas > .clsTabSelected {
+  background-color: var(--base-background-tabSelected);
+}
+
+body.fondomargen > .pestañas > div > h2 {
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Common Styles for Cart items and Recent lists */
+body.fondomargen > #tabTicket0,
+body.fondomargen > #tabTicket1 {
+  color: var(--base-fontColor-dark);
+  flex: 1;
+  flex-direction: column;
+  height: auto;
+  margin-top: -1px;
+  /* 
+   * 84px for Schedule and phone number
+   * 36px for tabs
+   */
+  max-height: calc(100% - 84px - 36px - 3px);
+}
+
+body.fondomargen > #tabTicket0.tabticketvisible,
+body.fondomargen > #tabTicket1.tablistavisible {
+  display: flex;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2,
+body.fondomargen > #tabTicket1 > .marcolistas {
+  width: 100%;
+}
+
+/* Cart items */
+body.fondomargen > #tabTicket0 > .marcoticket,
+body.fondomargen > #tabTicket1 > .marcolistas {
+  background-color: var(--base-background-table);
+  border-bottom: 8px solid var(--base-background-tabSelected);
+  flex: 1;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto {
+  background-color: transparent;
+  border: none;
+  border-collapse: initial;
+  border-spacing: initial;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  text-transform: none;
+  width: 100%;
+}
+
+/*
+ * I cannot use `:nth-child(even)` because the HTML follows like this:
+ * script, tr, script, tr, script, tr...
+ */
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr:nth-child(4n),
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr:nth-child(even) {
+  background-color: var(--base-background-tableZebra);
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > th,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > th > strong,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > strong,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > th,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > th > strong,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > strong {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit !important;
+  height: auto;
+  margin: 0;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > th,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > th,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td {
+  padding: 4px;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > th,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > th > strong,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > th,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > th > strong {
+  background-color: var(--base-background-tabSelected);
+  border: none;
+  font-size: var(--base-fontSize-medium);
+  text-transform: uppercase;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > p,
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > strong,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > p,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > strong {
+  background-color: transparent;
+  border: none;
+  font-size: var(--base-fontSize-small);
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td {
+  cursor: default;
+  height: 40px;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td:last-child,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > th:last-child {
+  display: none;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td.celda201 {
+  width: 30%;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > span {
+  margin: 0 4px;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > .suma_resta {
+  background: var(--base-background-button);
+  border: 1px solid var(--base-border-button);
+  border-radius: 4px;
+  color: var(--base-fontColor-dark);
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 4px 0;
+  padding: 4px 8px;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > a,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > a {
+  color: inherit;
+  display: inline-block;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > a:hover,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > a:hover {
+  opacity: 1;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > a > img,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > a > img {
+  width: 14px;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 {
+  background-color: var(--base-background-tabSelected);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--base-fontSize-large);
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales,
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales2 {
+  background-color: var(--base-background-table);
+  border: none;
+  color: inherit;
+  display: flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 8px;
+  padding-top: 0px;
+  width: 100%;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales {
+  padding-top: 8px;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales > .celdaticket21,
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales > .celdaticket22,
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales2 > .celdaticket23,
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales2 > .celdaticket24 {
+  border: none;
+  width: auto;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales > .celdaticket21,
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales2 > .celdaticket23 {
+  flex: 1;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales > .celdaticket22,
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales2 > .celdaticket24 {
+  text-transform: uppercase;
+}
+
+/* BUG: They're using `#totalEur` to display `#totalPts` and viceversa */
+body.fondomargen > #tabTicket0 > .lineaticket2 > .marcototales2 > #totalEur {
+  display: none;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket {
+  background-color: transparent;
+  border: none;
+  font-size: var(--base-fontSize-medium);
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana {
+  display: flex;
+  flex-direction: row;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana > .lineabotones11 {
+  flex: 1;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana > .lineabotones11:nth-child(2) {
+  display: none;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana > .lineabotones1 {
+  display: flex;
+  flex: 3;
+  padding: 4px;
+  padding-left: 0;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana > .lineabotones1 > .lineabotones2 {
+  display: block;
+  flex: 1;
+  font-size: inherit;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana > .lineabotones1 > .lineabotones2 > .enlinia {
+  display: block;
+}
+
+body.fondomargen > #tabTicket0 > .lineaticket2 > .lineabotonesticket > .listaplana > .lineabotones1 > .lineabotones2 > .enlinia > a {
+  background: var(--base-background-button);
+  border: 1px solid var(--base-border-button);
+  border-radius: 4px;
+  color: var(--base-fontColor-dark);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 4px 8px;
+}
+
+/* Recent lists */
+body.fondomargen > #tabTicket0 > .marcoticket,
+body.fondomargen > #tabTicket1 > .marcolistas {
+  flex: 1;
+  max-height: none;
+}
+
+/* Recommendations */
+
+body.fondomargen > #tabTicket1 > .espaciolistas,
+body.fondomargen > #tabTicket0 > div:nth-child(3),
+body.fondomargen > #tabTicket1 > div:nth-child(3),
+body.fondomargen > #tabTicket0 > .marcocesta1,
+body.fondomargen > #tabTicket1 > .marcocesta1,
+body.fondomargen > #tabTicket0 > .marcocestafin,
+body.fondomargen > #tabTicket1 > .marcocestafin {
+  display: none;
+}

@@ -80,13 +80,22 @@
       loadCssfile(menuFrame, 'menu.css');
     }
 
+    // Main menu
     const mainMenuFrame = document.querySelector('frame[name="topFrame"]');
     loadCssfile(mainMenuFrame, 'reset.css');
     loadCssfile(mainMenuFrame, 'mainMenu.css');
-
     setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset'), [
       ['cols', ''],
       ['rows', '34,*']
+    ]);
+
+    // Cart
+    const cartFrame = document.querySelector('frame[name="rightFrame"]');
+    loadCssfile(cartFrame, 'reset.css');
+    loadCssfile(cartFrame, 'cart.css');
+    setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset > frameset'), [
+      ['cols', '*,320'],
+      ['rows', '']
     ]);
   }
 
