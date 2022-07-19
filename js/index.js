@@ -35,23 +35,18 @@
   const minDesiredContentWidth = 480;
   const minDesiredTotalWidth = (maxSidebarWidth * 2) + minDesiredContentWidth;
   const getSidebarWidth = (screenWidth, frameWidth) => {
-    console.log(`Setting sidebar's width for a screen of ${screenWidth}px`);
-
     if (screenWidth > minDesiredTotalWidth) {
-      console.log('Returning max size');
       return `${maxSidebarWidth}`;
     }
 
-    if (frameWidth) {
-      console.log('The sidebar is located in a frame with a width of', frameWidth);
-      const percentage = Math.round((maxSidebarWidth * 100) / frameWidth);
-      console.log(`Returning percentage ${ percentage }%`);
+    const percentage = Math.round((maxSidebarWidth * 100) / minDesiredTotalWidth);
+    if (!frameWidth) {
       return `${ percentage }%`;
     }
 
-    const percentage = Math.round((maxSidebarWidth * 100) / minDesiredTotalWidth);
-    console.log(`Returning percentage ${ percentage }%`);
-    return `${ percentage }%`;
+    const desiredSize = (screenWidth * percentage) / 100;
+    const framePercentage = Math.round((desiredSize * 100) / frameWidth);
+    return `${framePercentage}%`;
   }
 
   const setMenuWidth = (screenWidth) => {
@@ -64,7 +59,6 @@
 
   const setCartWidth = (screenWidth) => {
     const frame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset');
-
     const width = getSidebarWidth(screenWidth, frame.clientWidth);
     setAttributes(frame, [
       ['cols', `*,${width}`],
@@ -73,10 +67,8 @@
   }
 
   const handleScreenResize = (event) => {
-    const sidebarWidth = getSidebarWidth(event.innerWidth);
-
-    setMenuWidth(sidebarWidth);
-    setCartWidth(sidebarWidth);
+    setMenuWidth(event.target.innerWidth);
+    setCartWidth(event.target.innerWidth);
   }
 
   const init = () => {    
@@ -130,6 +122,8 @@
     loadCssfile(cartFrame, 'reset.css');
     loadCssfile(cartFrame, 'cart.css');
     setCartWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleScreenResize);
   }
 
   setTimeout(init, 1000);
