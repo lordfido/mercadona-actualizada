@@ -123,6 +123,19 @@
     loadCssfile(cartFrame, 'cart.css');
     setCartWidth(window.innerWidth);
 
+    // Delivery Address
+    const addressFrame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset > frame[name="pedidoFrame"]')
+    loadCssfile(addressFrame, 'reset.css');
+    loadCssfile(addressFrame, 'address.css');
+
+    // Content
+
+    // Siempre Precios Bajos
+    setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset'), [
+      ['cols', ''],
+      ['rows', '34,*']
+    ])
+
     window.addEventListener('resize', handleScreenResize);
   }
 

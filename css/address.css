@@ -1,0 +1,27 @@
+body.estilo4 {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+body.estilo4 > .toppedido {
+  align-items: center;
+  background-color: var(--base-background-tabSelected);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: var(--base-fontColor-dark);
+  display: flex;
+  font-family: var(--base-fontFamily-main);
+  font-size: var(--base-fontSize-medium);
+  font-weight: var(--base-fontWeight-main);
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+body.estilo4 > .toppedido > .top_pedido {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}

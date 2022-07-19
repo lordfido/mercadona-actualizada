@@ -1,18 +1,3 @@
-html > frameset {
-  display: flex;
-  flex-direction: column;
-}
-
-html > frameset > frame,
-html > frameset > frameset {
-  display: flex;
-  height: auto;
-}
-
-html > frameset > frameset {
-  flex: 1
-}
-
 /* Menu */
 html > frameset > #framesetGlobal > frame {
   border-right: 1px solid var(--base-brandColor);

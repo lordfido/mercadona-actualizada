@@ -25,7 +25,8 @@
         "/css/topSearch.css",
         "/css/menu.css",
         "/css/mainMenu.css",
-        "/css/cart.css"
+        "/css/cart.css",
+        "/css/address.css"
       ]
     }
   ],
