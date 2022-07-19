@@ -170,7 +170,7 @@ body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > p,
 body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > strong {
   background-color: transparent;
   border: none;
-  font-size: var(--base-fontSize-small);
+  font-size: var(--base-fontSize-medium);
 }
 
 body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td,
@@ -189,7 +189,14 @@ body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td.celda201 {
 }
 
 body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > span {
+  display: inline-block;
   margin: 0 4px;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td.cell.celda201 > span {
+  vertical-align: top;
+  margin-top: 10px;
+  min-width: 16px;
 }
 
 body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > .suma_resta {
@@ -205,16 +212,16 @@ body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > .suma_res
   padding: 4px 8px;
 }
 
-body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > a,
-body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > a {
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td.celda221 > a,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td.cell2.celda26 > a {
   color: inherit;
   display: inline-block;
   opacity: 0.4;
   transition: opacity 0.3s;
 }
 
-body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td > a:hover,
-body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td > a:hover {
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr > td.celda221 > a:hover,
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr > td.cell2.celda26 > a:hover {
   opacity: 1;
 }
 
