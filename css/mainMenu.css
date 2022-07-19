@@ -9,9 +9,8 @@ body.estilo3 > .marcotop {
   color: var(--base-fontColor-main);
   display: flex;
   flex: 1;
-  float: none;
   font-family: var(--base-fontFamily-main);
-  font-size: var(--base-fontSize-main);
+  font-size: var(--base-fontSize-small);
   font-weight: var(--base-fontWeight-main);
 }
 
@@ -21,7 +20,6 @@ body.estilo3 > .marcotop > .botonestop {
   color: inherit;
   display: flex;
   flex: 1;
-  float: none;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -32,7 +30,6 @@ body.estilo3 > .marcotop > .botonestop {
 body.estilo3 > .marcotop > .botonestop > .botontop {
   color: inherit;
   display: flex;
-  float: none;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;

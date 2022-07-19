@@ -40,7 +40,7 @@ body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li > a:hover {
 }
 
 body > ul.ulnivel1 {
-  font-size: var(--base-fontSize-main);
+  font-size: var(--base-fontSize-medium);
 }
 
 body > ul.ulnivel1 li:has(ul) {

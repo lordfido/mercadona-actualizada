@@ -3,19 +3,37 @@
   
   /* Colors */
   --base-brandColor: #006633;
+  
+  --base-white: #FFFFFF;
+  --base-black: #000000;
+
+  --base-orange500: #FFCC00;
+  --base-orange100: #FFFFCC;
+  --base-orange050: #FFFFEE;
+
+  --base-green300: #B9C186;
 
   /* Colors: Backgrounds */
   --base-background-title: var(--base-brandColor);
-  --base-background-main: #FFFFEE;
+  --base-background-main: var(--base-orange050);
   --base-background-hover: #00663344;
+  --base-background-tab: var(--base-green300);
+  --base-background-tabSelected: var(--base-orange500);
+  --base-background-table: var(--base-orange050);
+  --base-background-tableZebra: var(--base-orange100);
+  --base-background-button: var(--base-white);
+
+  /* Colors: Borders */
+  --base-border-button: var(--base-black);
 
   /* Colors: Texts */
-  --base-fontColor-dark: #000000;
-  --base-fontColor-main: #FFFFFF;
+  --base-fontColor-dark: var(--base-black);
+  --base-fontColor-main: var(--base-white);
 
   /* Font Sizes */
-  --base-fontSize-title: 1em;
-  --base-fontSize-main: 0.85em;
+  --base-fontSize-large: 1em;
+  --base-fontSize-medium: 0.85em;
+  --base-fontSize-small: 0.75em;
 
   /* Font Weights */
   --base-fontWeight-title: 700;
@@ -35,6 +53,8 @@ body {
 
 * {
   box-sizing: border-box;
+  float: none !important;
+  clear: both !important;
 }
 
 code {
@@ -49,4 +69,8 @@ a {
 
 input {
   width: 100%;
+}
+
+strong {
+  font-weight: inherit !important;
 }
