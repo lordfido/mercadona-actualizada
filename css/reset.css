@@ -53,8 +53,9 @@ body {
 
 * {
   box-sizing: border-box;
-  float: none !important;
   clear: both !important;
+  float: none !important;
+  overflow-x: hidden;
 }
 
 code {

@@ -10,8 +10,9 @@ body.estilo3 > .marcotop {
   display: flex;
   flex: 1;
   font-family: var(--base-fontFamily-main);
-  font-size: var(--base-fontSize-small);
+  font-size: var(--base-fontSize-medium);
   font-weight: var(--base-fontWeight-main);
+  text-transform: uppercase;
 }
 
 body.estilo3 > .marcotop > .botonestop {
