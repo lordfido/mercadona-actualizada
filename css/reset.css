@@ -14,8 +14,8 @@
   --base-fontColor-main: #FFFFFF;
 
   /* Font Sizes */
-  --base-fontSize--title: 1em;
-  --base-fontSize--main: 0.85em;
+  --base-fontSize-title: 1em;
+  --base-fontSize-main: 0.85em;
 
   /* Font Weights */
   --base-fontWeight-title: 700;
