@@ -12,3 +12,13 @@ html > frameset > frameset {
 html > frameset > frameset {
   flex: 1
 }
+
+/* Menu */
+html > frameset > #framesetGlobal > frame {
+  border-right: 1px solid var(--base-brandColor);
+}
+
+/* Cart */
+html > frameset > #framesetGlobal > frameset > frameset > frame {
+  border-left: 1px solid var(--base-brandColor);
+}
