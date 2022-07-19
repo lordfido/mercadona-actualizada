@@ -2,8 +2,6 @@
   const setAttributes = (element, attributes) => {
     if (element && attributes?.length) {
       attributes.forEach(([attr, value]) => {
-        console.log(`[MA] Estableciendo <${attr} = ${value}> en <${element.name}>`, !element.name && element);
-        
         element.attributes[attr] = value;
         if (element[attr] !== undefined) {
           element[attr] = value;
@@ -16,8 +14,6 @@
   
   const loadCssfile = (frameElement, css) => {
     if (frameElement && css) {
-      console.log(`[MA] Cargando <${css}> en <${frameElement.name}>`);
-      
       const link = document.createElement('link');
       link.href = getCSSFile(`/css/${css}`);
       link.rel = 'stylesheet';
@@ -31,26 +27,66 @@
 
       if (!!appendElement?.append) {
         appendElement.append(link);
-      } else {
-        console.log(`[MA] No se pudo cargar <${css}> en <${frameElement.name}>`);
       }
     }
   };
 
-  const init = () => {
-    console.log('[MA] Iniciada');
-    
+  const maxSidebarWidth = 320;
+  const minDesiredContentWidth = 480;
+  const minDesiredTotalWidth = (maxSidebarWidth * 2) + minDesiredContentWidth;
+  const getSidebarWidth = (screenWidth, frameWidth) => {
+    console.log(`Setting sidebar's width for a screen of ${screenWidth}px`);
+
+    if (screenWidth > minDesiredTotalWidth) {
+      console.log('Returning max size');
+      return `${maxSidebarWidth}`;
+    }
+
+    if (frameWidth) {
+      console.log('The sidebar is located in a frame with a width of', frameWidth);
+      const percentage = Math.round((maxSidebarWidth * 100) / frameWidth);
+      console.log(`Returning percentage ${ percentage }%`);
+      return `${ percentage }%`;
+    }
+
+    const percentage = Math.round((maxSidebarWidth * 100) / minDesiredTotalWidth);
+    console.log(`Returning percentage ${ percentage }%`);
+    return `${ percentage }%`;
+  }
+
+  const setMenuWidth = (screenWidth) => {
+    const width = getSidebarWidth(screenWidth);
+    setAttributes(document.querySelector('html > frameset > frameset'), [
+      ['cols', `${width},*`],
+      ['rows', '']
+    ]);
+  }
+
+  const setCartWidth = (screenWidth) => {
+    const frame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset');
+
+    const width = getSidebarWidth(screenWidth, frame.clientWidth);
+    setAttributes(frame, [
+      ['cols', `*,${width}`],
+      ['rows', '']
+    ]);
+  }
+
+  const handleScreenResize = (event) => {
+    const sidebarWidth = getSidebarWidth(event.innerWidth);
+
+    setMenuWidth(sidebarWidth);
+    setCartWidth(sidebarWidth);
+  }
+
+  const init = () => {    
     // Main document
     loadCssfile(document, 'reset.css');
     loadCssfile(document, 'index.css');
-
+    setMenuWidth(window.innerWidth);
     setAttributes(document.querySelector('html > frameset'), [
       ['cols', ''],
       ['rows', '34,*']
-    ]);
-    setAttributes(document.querySelector('html > frameset > frameset'), [
-      ['cols', '320,*'],
-      ['rows', '']
     ]);
 
     // Sitemap
@@ -93,10 +129,7 @@
     const cartFrame = document.querySelector('frame[name="rightFrame"]');
     loadCssfile(cartFrame, 'reset.css');
     loadCssfile(cartFrame, 'cart.css');
-    setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset > frameset'), [
-      ['cols', '*,320'],
-      ['rows', '']
-    ]);
+    setCartWidth(window.innerWidth);
   }
 
   setTimeout(init, 1000);
