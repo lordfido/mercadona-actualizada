@@ -120,12 +120,12 @@ body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto {
   width: 100%;
 }
 
-/*
- * I cannot use `:nth-child(even)` because the HTML follows like this:
- * script, tr, script, tr, script, tr...
- */
-body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr:nth-child(4n),
-body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr:nth-child(even) {
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr + script {
+  display: none;
+}
+
+body.fondomargen > #tabTicket0 > .marcoticket > .listadoprod tr:nth-of-type(2n),
+body.fondomargen > #tabTicket1 > .marcolistas > .ticket2.producto tr:nth-of-type(2n) {
   background-color: var(--base-background-tableZebra);
 }
 
