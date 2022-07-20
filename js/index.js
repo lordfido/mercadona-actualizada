@@ -263,6 +263,10 @@ const init = () => {
       ['rows', '34,*']
     ]);
   }
+
+  // modcliente.php
+
+  // formalizar.php
 }
 
 setTimeout(init, 1000);

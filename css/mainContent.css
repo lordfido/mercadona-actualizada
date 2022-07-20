@@ -87,7 +87,7 @@ body > .cabecera_ppal > .num_prod {
   flex: initial;
 }
 
-/* Table */
+/* Products List: Table */
 body > .cabecera_ppal > .tablalista {
   border-bottom: 5px solid var(--base-background-tabSelected);
   border-top: 8px solid var(--base-background-tabSelected);
@@ -172,7 +172,7 @@ body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(4) > inp
   width: 40px;
 }
 
-/* Pagination */
+/* Products List: Pagination */
 body > .divbotnav {
   background-color: var(--base-background-tabSelected);
   font-size: var(--base-fontSize-small);
@@ -203,4 +203,27 @@ body > .divbotnav > .botonsubmitmenu {
 
 body > .divbotnav > .botonsubmitmenu[title="Volver"] {
   display: none;
+}
+
+/* List content */
+body > .divpeuvis {
+  background-color: var(--base-background-tabSelected);
+  font-size: var(--base-fontSize-small);
+  margin: 0;
+  padding: 4px 8px;
+  padding-top: 0px;
+  position: initial;
+  visibility: initial;
+  width: 100%;
+}
+
+body > .divpeuvis > .botonsubmitmenu {
+  background: var(--base-background-button);
+  border: 1px solid var(--base-border-button);
+  border-radius: 4px;
+  color: var(--base-fontColor-dark);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 4px 8px;
 }
