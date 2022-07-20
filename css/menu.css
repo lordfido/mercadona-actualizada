@@ -23,6 +23,10 @@ body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 {
   padding-top: 4px;
 }
 
+body > ul.ulnivel1 {
+  padding-bottom: 20px;
+}
+
 body > ul.ulnivel1 > li > a,
 body > ul.ulnivel1 > li > ul.ulnivel2 > li > a,
 body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li > a {
