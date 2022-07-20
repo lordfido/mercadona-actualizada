@@ -74,6 +74,21 @@
   flex: 1;
 }
 
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador2 > .izqdoancho1 > input {
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.marcocentrado1 > div:nth-child(2) > .celdaBuscador > .textobuscador2 > .izqdoancho2 > input {
+  border: 1px solid var(--base-border-input);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left: 0;
+  padding: 5px;
+  padding-top: 6px;
+}
+
 .marcocentrado1 > .cuerposeccion > .textoseccion {
   background: transparent;
   border: none;
