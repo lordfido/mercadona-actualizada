@@ -28,7 +28,7 @@ body > ul.ulnivel1 > li > ul.ulnivel2 > li > a,
 body > ul.ulnivel1 > li > ul.ulnivel2 > li > ul.ulnivel3 > li > a {
   border-radius: 4px;
   display: block;
-  padding: 4px;
+  padding: 8px 4px;
   transition: background-color 0.3s;
   width: 100%;
 }
