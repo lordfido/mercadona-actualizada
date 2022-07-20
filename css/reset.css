@@ -5,6 +5,7 @@
   --base-brandColor: #006633;
   
   --base-white: #FFFFFF;
+  --base-grey: #858585;
   --base-black: #000000;
 
   --base-orange500: #FFCC00;
@@ -25,6 +26,7 @@
 
   /* Colors: Borders */
   --base-border-button: var(--base-black);
+  --base-border-input: var(--base-grey);
 
   /* Colors: Texts */
   --base-fontColor-dark: var(--base-black);
@@ -38,6 +40,9 @@
   /* Font Weights */
   --base-fontWeight-title: 700;
   --base-fontWeight-main: 400;
+
+  /* Images */
+  --base-externalWindow: url('https://www.telecompra.mercadona.es/imagenes/1574513921___abreVentana.png');
 }
 
 html,
@@ -59,6 +64,13 @@ body {
   float: none !important;
   /* This rule is removing the list-items' marks */
   /* overflow-x: hidden; */
+  background-color: transparent;
+  border: none;
+  border-spacing: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 code {
@@ -72,6 +84,11 @@ a {
 }
 
 input {
+  background-color: field;
+  border: 1px solid var(--base-border-input);
+  border-image: initial;
+  border-radius: 4px;
+  padding: 8px;
   width: 100%;
 }
 

@@ -122,8 +122,14 @@ function FrameUtils() {
 
   this.getFrameElements = () => frames.reduce((aggr, curr) => {
     if (!aggr[curr.name]) {
+      if (curr.selector === 'document') {
+        aggr[curr.name] = document;
+        return aggr;
+      }
+        
       const parent = curr.parent ? this.getFrameContent(curr.parent) : document;
       aggr[curr.name] = (parent ?? document).querySelector(curr.selector);
+      return aggr;
     }
 
     return aggr;
@@ -217,7 +223,7 @@ const init = () => {
     cssUtils.loadFile(topSearch, 'topSearch.css');
     utils.setAttributes(topSearchWrapper, [
       ['cols', ''],
-      ['rows', '176,*']
+      ['rows', '204,*']
     ]);
 
     // Menu

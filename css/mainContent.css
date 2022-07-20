@@ -1,3 +1,30 @@
+/* Inherit styles */
+html div.titulo_lista,
+html h1.titulo_lista,
+html div.imagen,
+html div.num_prod,
+html tr.tablacabecera,
+body td.tdline,
+body td.tdline2,
+body td.tdline3,
+body td.lPar,
+body td.lPar2,
+body td.lImpar,
+body td.lImpar2,
+body > .cabecera_ppal > .tablalista > .tablaproductos > tbody > tr > td:nth-child(2) > span > a,
+body a.suma_resta,
+body input.listaprod,
+body > .divbotnav > .numpaginas,
+body > .divbotnav > .botonsubmitmenu {
+  background-color: transparent;
+  border: none;
+  border-spacing: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 body, body.bodyguia {
   background-color: var(--base-background-main);
   display: flex;
@@ -12,9 +39,6 @@ body.bodyguia > .guiaimg {
 
 body.bodyguia > ol {
   flex: 1;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
   margin: 0;
   margin-top: 12px;
   overflow: hidden;
@@ -27,7 +51,6 @@ body > .cabecera_ppal {
   display: flex;
   flex: 1;
   flex-direction: column;
-  height: 100%;
   margin: 0;
   visibility: initial;
   width: 100%;
@@ -43,14 +66,11 @@ body > .cabecera_ppal > .cab_producto {
 }
 
 body > .cabecera_ppal > .cab_producto > .titulo_lista,
-body > .cabecera_ppal > .cab_producto > .imagen {
+body > .cabecera_ppal > .cab_producto > .imagen,
+body > .cabecera_ppal > .num_prod {
   align-items: center;
-  color: inherit;
   display: flex;
   flex: 1;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
   vertical-align: initial;
 }
 
@@ -62,11 +82,125 @@ body > .cabecera_ppal > .cab_producto > .imagen > img {
   margin-right: 4px;
 }
 
+body > .cabecera_ppal > .num_prod {
+  flex-direction: row;
+  flex: initial;
+}
+
+/* Table */
 body > .cabecera_ppal > .tablalista {
+  border-bottom: 5px solid var(--base-background-tabSelected);
+  border-top: 8px solid var(--base-background-tabSelected);
   flex: 1;
-  padding: 8px 0;
+  font-size: var(--base-fontSize-small);
+  padding: 0;
 }
 
 body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:first-child img {
+  display: none;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr.tablacabecera {
+  background-color: var(--base-background-tabSelected);
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr.tablacabecera > th {
+  background-color: transparent;
+  border: none;
+  border-bottom: 8px solid var(--base-background-tabSelected);
+  padding: 4px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr:nth-of-type(2n) {
+  background-color: var(--base-background-tableZebra);
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td {
+  padding: 8px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(2) > span > a {
+  align-items: center;
+  display: flex;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(2) > span > a::after {
+  background-image: var(--base-externalWindow);
+  content: ' ';
+  display: inline-block;
+  height: 10px;
+  margin-left: 4px;
+  width: 10px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(3) > br {
+  display: none;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(3) > span {
+  display: block;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(3) > span:first-of-type {
+  margin-bottom: 4px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(3) > span:nth-of-type(2) {
+  font-style: italic;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(4) {
+  min-width: 128px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(4) > a.suma_resta,
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(4) > input.listaprod {
+  background: var(--base-background-button);
+  border: 1px solid var(--base-border-button);
+  border-radius: 4px;
+  color: var(--base-fontColor-dark);
+  display: inline-block;
+  padding: 4px 8px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(4) > a.suma_resta {
+  margin: 4px;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:nth-child(4) > input.listaprod {
+  margin: 4px 0;
+  width: 40px;
+}
+
+/* Pagination */
+body > .divbotnav {
+  background-color: var(--base-background-tabSelected);
+  font-size: var(--base-fontSize-small);
+  margin: 0;
+  padding: 4px 8px;
+  padding-top: 0px;
+  position: initial;
+  visibility: initial;
+  width: 100%;
+}
+
+body > .divbotnav > .numpaginas,
+body > .divbotnav > .botonsubmitmenu {
+  display: inline-block;
+  margin: 0px 4px;
+}
+
+body > .divbotnav > .botonsubmitmenu {
+  background: var(--base-background-button);
+  border: 1px solid var(--base-border-button);
+  border-radius: 4px;
+  color: var(--base-fontColor-dark);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 4px 8px;
+}
+
+body > .divbotnav > .botonsubmitmenu[title="Volver"] {
   display: none;
 }
