@@ -1,40 +1,31 @@
-(function() {
-  const setAttributes = (element, attributes) => {
-    if (element && attributes?.length) {
-      attributes.forEach(([attr, value]) => {
-        element.attributes[attr] = value;
-        if (element[attr] !== undefined) {
-          element[attr] = value;
-        }
-      });
-    }
-  };
-
-  const getCSSFile = (fileName) => chrome.runtime.getURL(fileName);
-  
-  const loadCssfile = (frameElement, css) => {
-    if (frameElement && css) {
+function CssUtils() {
+  this.loadFile = (element, cssFileName) => {
+    if (element && cssFileName) {
       const link = document.createElement('link');
-      link.href = getCSSFile(`/css/${css}`);
+      link.href = chrome.runtime.getURL(`/css/${cssFileName}`);
       link.rel = 'stylesheet';
       link.type = 'text/css';
 
-      const doc = frameElement.contentDocument;
-      const appendElement = frameElement.head
-        ?? frameElement.body
+      const doc = element.contentDocument;
+      const appendElement = element.head
+        ?? element.body
         ?? doc.head
         ?? doc.body;
-
+  
       if (!!appendElement?.append) {
         appendElement.append(link);
       }
     }
   };
+}
+const cssUtils = new CssUtils();
 
-  const maxSidebarWidth = 320;
-  const minDesiredContentWidth = 480;
-  const minDesiredTotalWidth = (maxSidebarWidth * 2) + minDesiredContentWidth;
-  const getSidebarWidth = (screenWidth, frameWidth) => {
+function Utils() {
+  this.getSidebarWidth = (screenWidth, frameWidth) => {
+    const maxSidebarWidth = 320;
+    const minDesiredContentWidth = 480;
+    const minDesiredTotalWidth = (maxSidebarWidth * 2) + minDesiredContentWidth;
+
     if (screenWidth > minDesiredTotalWidth) {
       return `${maxSidebarWidth}`;
     }
@@ -47,106 +38,225 @@
     const desiredSize = (screenWidth * percentage) / 100;
     const framePercentage = Math.round((desiredSize * 100) / frameWidth);
     return `${framePercentage}%`;
-  }
+  };
 
-  const setMenuWidth = (screenWidth) => {
-    const width = getSidebarWidth(screenWidth);
-    setAttributes(document.querySelector('html > frameset > frameset'), [
-      ['cols', `${width},*`],
-      ['rows', '']
-    ]);
-  }
+  this.setAttributes = (element, attributes) => {
+    if (element && attributes?.length) {
+      attributes.forEach(([attr, value]) => {
+        element.attributes[attr] = value;
+        if (element[attr] !== undefined) {
+          element[attr] = value;
+        }
+      });
+    }
+  };
+};
+const utils = new Utils();
 
-  const setCartWidth = (screenWidth) => {
-    const frame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset');
-    const width = getSidebarWidth(screenWidth, frame.clientWidth);
-    setAttributes(frame, [
-      ['cols', `*,${width}`],
-      ['rows', '']
-    ]);
-  }
+function FrameUtils() {
+  const frames = [
+    {
+      name: 'root',
+      selector: 'document',
+    },
+    {
+      name: 'sitemap',
+      selector: 'frame[name="linea"]',
+    },
+    {
+      name: 'sitemapWrapper',
+      selector: 'html > frameset',
+    },
+    {
+      name: 'sidebar',
+      selector: 'frame[name="toc"]',
+    },
+    {
+      name: 'topSearch',
+      selector: 'frame[name="topbusc"]',
+      parent: 'sidebar'
+    },
+    {
+      name: 'topSearchWrapper',
+      selector: 'html > frameset',
+      parent: 'sidebar'
+    },
+    {
+      name: 'menu',
+      selector: 'frame[name="menu"]',
+      parent: 'sidebar'
+    },
+    {
+      name: 'menuWrapper',
+      selector: 'html > frameset > frameset',
+    },
+    {
+      name: 'mainMenu',
+      selector: 'frame[name="topFrame"]',
+    },
+    {
+      name: 'mainMenuWrapper',
+      selector: 'html > frameset > #framesetGlobal > frameset',
+    },
+    {
+      name: 'cart',
+      selector: 'frame[name="rightFrame"]',
+    },
+    {
+      name: 'cartWrapper',
+      selector: 'html > frameset > #framesetGlobal > frameset > frameset',
+    },
+    {
+      name: 'address',
+      selector: 'frame[name="pedidoFrame"]',
+    },
+    {
+      name: 'content',
+      selector: 'frame[name="mainFrame"]',
+    },
+    {
+      name: 'siemprePreciosBajos',
+      selector: 'html > frameset > #framesetGlobal > frameset > frameset > frameset',
+    },
+  ];
 
-  const handleScreenResize = (event) => {
-    setMenuWidth(event.target.innerWidth);
-    setCartWidth(event.target.innerWidth);
-  }
+  this.getFrameElements = () => frames.reduce((aggr, curr) => {
+    if (!aggr[curr.name]) {
+      const parent = curr.parent ? this.getFrameContent(curr.parent) : document;
+      aggr[curr.name] = (parent ?? document).querySelector(curr.selector);
+    }
 
-  const init = () => {    
+    return aggr;
+  }, {});
+
+  this.getFramesContent = () => frames.reduce((aggr, curr) => {
+    if (!aggr[curr.name]) {
+      const parent = curr.parent ? this.getFrameContent(curr.parent) : document;
+      aggr[curr.name] = parent.querySelector(curr.selector)?.contentDocument;
+    }
+
+    return aggr;
+  }, {});
+
+  this.getFrameElement = (name) => {
+    const frameConfig = frames.find(f => f.name === name);
+    const parent = frameConfig.parent ? this.getFrameContent(frameConfig.parent) : document;
+    return parent.querySelector(frameConfig.selector);
+  };
+
+  this.getFrameContent = (name) => this.getFrameElement(name)?.contentDocument;
+
+  this.setMenuWidth = (screenWidth) => {
+    const frame = this.getFrameElement('menuWrapper');
+    if (frame) {
+      const width = utils.getSidebarWidth(screenWidth);
+
+      utils.setAttributes(frame, [
+        ['cols', `${width},*`],
+        ['rows', '']
+      ]);
+    }
+  };
+
+  this.setCartWidth = (screenWidth) => {
+    const frame = this.getFrameElement('cartWrapper');
+    if (frame) {
+      const width = utils.getSidebarWidth(screenWidth, frame.clientWidth);
+
+      utils.setAttributes(frame, [
+        ['cols', `*,${width}`],
+        ['rows', '']
+      ]);
+    }
+  };
+}
+const frameUtils = new FrameUtils();
+
+const init = () => {
+  window.addEventListener('resize', (event) => {
+    frameUtils.setMenuWidth(event.target.innerWidth);
+    frameUtils.setCartWidth(event.target.innerWidth);
+  });
+  
+  if (/principal.php/.test(location.href)) {
+    const {
+      root,
+      sitemap,
+      sitemapWrapper,
+      sidebar,
+      topSearch,
+      topSearchWrapper,
+      menu,
+      mainMenu,
+      mainMenuWrapper,
+      cart,
+      address,
+      content,
+      siemprePreciosBajos
+    } = frameUtils.getFrameElements();
+
     // Main document
-    loadCssfile(document, 'reset.css');
-    loadCssfile(document, 'index.css');
-    setMenuWidth(window.innerWidth);
-    setAttributes(document.querySelector('html > frameset'), [
+    cssUtils.loadFile(root, 'reset.css');
+    cssUtils.loadFile(root, 'index.css');
+    frameUtils.setMenuWidth(window.innerWidth);
+    utils.setAttributes(sitemapWrapper, [
       ['cols', ''],
       ['rows', '34,*']
     ]);
 
     // Sitemap
-    const sitemapFrame = document.querySelector('frame[name="linea"]');
-    loadCssfile(sitemapFrame, 'reset.css');
-    loadCssfile(sitemapFrame, 'sitemap.css');
+    cssUtils.loadFile(sitemap, 'reset.css');
+    cssUtils.loadFile(sitemap, 'sitemap.css');
   
     // Sidebar
-    const sidebarFrame = document.querySelector('frame[name="toc"]');
-    loadCssfile(sidebarFrame, 'reset.css');
-    loadCssfile(sidebarFrame, 'sidebar.css');
+    cssUtils.loadFile(sidebar, 'reset.css');
+    cssUtils.loadFile(sidebar, 'sidebar.css');
   
-    const sidebarContent = sidebarFrame?.contentDocument;
-    if (sidebarContent) {
-      // Top Search
-      const topSearchFrame = sidebarContent.querySelector('frame[name="topbusc"]');
-      loadCssfile(topSearchFrame, 'reset.css');
-      loadCssfile(topSearchFrame, 'topSearch.css');
-      setAttributes(sidebarContent.querySelector('html > frameset'), [
-        ['cols', ''],
-        ['rows', '176,*']
-      ]);
+    // Top Search
+    cssUtils.loadFile(topSearch, 'reset.css');
+    cssUtils.loadFile(topSearch, 'topSearch.css');
+    utils.setAttributes(topSearchWrapper, [
+      ['cols', ''],
+      ['rows', '176,*']
+    ]);
 
-      // Menu
-      const menuFrame = sidebarContent.querySelector('frame[name="menu"]');
-      loadCssfile(menuFrame, 'reset.css');
-      loadCssfile(menuFrame, 'menu.css');
-    }
+    // Menu
+    cssUtils.loadFile(menu, 'reset.css');
+    cssUtils.loadFile(menu, 'menu.css');
 
     // Main menu
-    const mainMenuFrame = document.querySelector('frame[name="topFrame"]');
-    loadCssfile(mainMenuFrame, 'reset.css');
-    loadCssfile(mainMenuFrame, 'mainMenu.css');
-    setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset'), [
+    cssUtils.loadFile(mainMenu, 'reset.css');
+    cssUtils.loadFile(mainMenu, 'mainMenu.css');
+    utils.setAttributes(mainMenuWrapper, [
       ['cols', ''],
       ['rows', '34,*']
     ]);
 
     // Cart
-    const cartFrame = document.querySelector('frame[name="rightFrame"]');
-    loadCssfile(cartFrame, 'reset.css');
-    loadCssfile(cartFrame, 'cart.css');
-    setCartWidth(window.innerWidth);
+    cssUtils.loadFile(cart, 'reset.css');
+    cssUtils.loadFile(cart, 'cart.css');
+    frameUtils.setCartWidth(window.innerWidth);
 
     // Delivery Address
-    const addressFrame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset > frame[name="pedidoFrame"]')
-    loadCssfile(addressFrame, 'reset.css');
-    loadCssfile(addressFrame, 'address.css');
+    cssUtils.loadFile(address, 'reset.css');
+    cssUtils.loadFile(address, 'address.css');
 
     // Content
-    const contentFrame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset > frame[name="mainFrame"]');
     const loadMainContentCss = () => {
-      loadCssfile(contentFrame, 'reset.css');
-      loadCssfile(contentFrame, 'mainContent.css');
+      cssUtils.loadFile(content, 'reset.css');
+      cssUtils.loadFile(content, 'mainContent.css');
     }
-    contentFrame.onload = () => {
+    content.onload = () => {
       loadMainContentCss();
     }
     loadMainContentCss();
 
     // Siempre Precios Bajos
-    setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset'), [
+    utils.setAttributes(siemprePreciosBajos, [
       ['cols', ''],
       ['rows', '34,*']
-    ])
-
-    window.addEventListener('resize', handleScreenResize);
+    ]);
   }
+}
 
-  setTimeout(init, 1000);
-})()
+setTimeout(init, 1000);
