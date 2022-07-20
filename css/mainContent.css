@@ -1,0 +1,72 @@
+body, body.bodyguia {
+  background-color: var(--base-background-main);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Purchase guide */
+body.bodyguia > .guiaimg {
+  display: none;
+}
+
+body.bodyguia > ol {
+  flex: 1;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 12px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding-bottom: 12px;
+}
+
+/* Products list */
+body > .cabecera_ppal {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  visibility: initial;
+  width: 100%;
+}
+
+body > .cabecera_ppal > .cab_producto,
+body > .cabecera_ppal > .num_prod {
+  padding: 8px;
+}
+
+body > .cabecera_ppal > .cab_producto {
+  display: flex;
+}
+
+body > .cabecera_ppal > .cab_producto > .titulo_lista,
+body > .cabecera_ppal > .cab_producto > .imagen {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex: 1;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  vertical-align: initial;
+}
+
+body > .cabecera_ppal > .cab_producto > .imagen {
+  justify-content: flex-end;
+}
+
+body > .cabecera_ppal > .cab_producto > .imagen > img {
+  margin-right: 4px;
+}
+
+body > .cabecera_ppal > .tablalista {
+  flex: 1;
+  padding: 8px 0;
+}
+
+body > .cabecera_ppal > .tablalista > .tablaproductos tr > td:first-child img {
+  display: none;
+}

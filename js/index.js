@@ -129,6 +129,15 @@
     loadCssfile(addressFrame, 'address.css');
 
     // Content
+    const contentFrame = document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset > frame[name="mainFrame"]');
+    const loadMainContentCss = () => {
+      loadCssfile(contentFrame, 'reset.css');
+      loadCssfile(contentFrame, 'mainContent.css');
+    }
+    contentFrame.onload = () => {
+      loadMainContentCss();
+    }
+    loadMainContentCss();
 
     // Siempre Precios Bajos
     setAttributes(document.querySelector('html > frameset > #framesetGlobal > frameset > frameset > frameset'), [

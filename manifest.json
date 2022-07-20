@@ -26,7 +26,8 @@
         "/css/menu.css",
         "/css/mainMenu.css",
         "/css/cart.css",
-        "/css/address.css"
+        "/css/address.css",
+        "/css/mainContent.css"
       ]
     }
   ],
